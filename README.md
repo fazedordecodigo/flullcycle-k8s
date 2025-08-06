@@ -1,0 +1,33 @@
+```mermaid
+flowchart TD
+    subgraph k8s_cluster [Kubernetes Cluster]
+        direction TB
+        control_plane_node[Control Plane Node]
+        worker_node_1[Worker Node 1]
+        worker_node_2[Worker Node 2]
+        worker_node_3[Worker Node 3]
+    end
+
+    subgraph workloads_layer [Workloads Layer]
+        direction TB
+        goserver_deployment[Deployment goserver]
+        goserver_replicaset[ReplicaSet goserver]
+        goserver_pod[Pod goserver]
+    end
+
+    subgraph service_layer [Service Layer]
+        goserver_service[Service goserver_service]
+    end
+
+    control_plane_node --> worker_node_1
+    worker_node_1 --> worker_node_2
+    worker_node_2 --> worker_node_3
+
+    goserver_deployment --> goserver_replicaset
+    goserver_replicaset --> goserver_pod
+    goserver_pod --> goserver_service
+
+    goserver_service --> worker_node_1
+    goserver_service --> worker_node_2
+    goserver_service --> worker_node_3
+```

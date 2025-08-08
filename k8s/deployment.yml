@@ -17,21 +17,6 @@ spec:
       containers:
         - name: goserver
           image: fazedordecodigo/hello-go:v1
-          env:
-            - name: NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: goserver-env
-                  key: NAME
-            - name: AGE
-              valueFrom:
-                configMapKeyRef:
-                  name: goserver-env
-                  key: AGE
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
+          envFrom:
+            - configMapRef:
+                name: goserver-env

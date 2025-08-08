@@ -19,9 +19,15 @@ spec:
           image: fazedordecodigo/hello-go:v1
           env:
             - name: NAME
-              value: "Emerson"
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env
+                  key: NAME
             - name: AGE
-              value: "38"
+              valueFrom:
+                configMapKeyRef:
+                  name: goserver-env
+                  key: AGE
           resources:
             requests:
               memory: "64Mi"

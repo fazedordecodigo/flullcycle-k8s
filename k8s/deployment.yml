@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: fazedordecodigo/hello-go:v2.1
+          image: fazedordecodigo/hello-go:v2.2.2
           envFrom:
             - configMapRef:
                 name: goserver-env

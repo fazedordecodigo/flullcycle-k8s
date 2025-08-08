@@ -9,5 +9,5 @@ spec:
   ports:
     - name: goserver-service
       protocol: TCP
-      port: 8000 # Port on the service
+      port: 80 # Port on the service
       targetPort: 80 # Port on the container

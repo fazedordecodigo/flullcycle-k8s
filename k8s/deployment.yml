@@ -17,6 +17,14 @@ spec:
       containers:
         - name: goserver
           image: fazedordecodigo/hello-go:v2.2.2
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80 # Porta do container e não so service
+            periodSeconds: 5
+            failureThreshold: 3
+            timeoutSeconds: 1
+            successThreshold: 1
           envFrom:
             - configMapRef:
                 name: goserver-env

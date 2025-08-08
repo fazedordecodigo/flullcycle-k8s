@@ -5,7 +5,7 @@ metadata:
   labels:
     app: goserver
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: goserver
@@ -16,7 +16,12 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: fazedordecodigo/hello-go:latest
+          image: fazedordecodigo/hello-go:v1
+          env:
+            - name: NAME
+              value: "Emerson"
+            - name: AGE
+              value: "38"
           resources:
             requests:
               memory: "64Mi"
